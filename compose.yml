@@ -2,9 +2,8 @@ version: "3"
 
 services:
   api:
-    container_name: "api"
     volumes:
-      - ./app:/app
+      - ./api:/api
       - .:/work
     build:
       context: .
