@@ -1,0 +1,21 @@
+name: Run unit tests
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+      - name: compose-run
+        shell: bash
+        run: |
+          docker compose build
+          docker compose run --rm app bash -c "cd /work/tests && pytest"
