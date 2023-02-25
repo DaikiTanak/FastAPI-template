@@ -25,4 +25,3 @@ jobs:
           pip install flake8
       - name: flake8
         run: flake8 --ignore=E501,W503
-
